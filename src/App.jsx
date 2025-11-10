@@ -1,7 +1,12 @@
+import AgendaDeContactos from "./componentes/AgendaDeContactos";
 import "./App.css";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <AgendaDeContactos />
+    </>
+  );
 }
 
 export default App;

@@ -1,7 +1,116 @@
 /* ====================
 Variables 
 ==================== */
-
+:root {
+  --height-container: 300px;
+  --height-container: 30em;
+  --size-img-github: 2.2rem;
+  --bg-color-input: #74d4ff;
+  --bg-color-tr: #f1f5f9;
+  --bg-color-btn-submit: #5ee9b5;
+  --bg-color-btn-edit: #ffdf20; /*f7df1e*/
+  --bg-color-btn-delete: #ffa1ad; /*ff637e*/
+}
 /* ====================
 Estilos del sitio
 ==================== */
+main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.formulario {
+  position: absolute;
+  top: 5rem;
+
+  height: 300px;
+  width: 30em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.formulario > a {
+  border-radius: 50%;
+  padding: 0.2em;
+}
+
+.formulario > a img {
+  height: var(--size-img-github);
+  width: var(--size-img-github);
+}
+
+.formulario > input[type="text"],
+input[type="tel"],
+input[type="email"] {
+  font-size: medium;
+  margin-bottom: 10px;
+  text-indent: 3px;
+  height: 2rem;
+  width: 14rem;
+}
+
+.formulario > input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus {
+  background-color: var(--bg-color-input);
+}
+
+.formulario > input[type="submit"] {
+  border-radius: 6px;
+  font-size: large;
+  font-weight: bold;
+  margin-bottom: 10px;
+  height: 2rem;
+  width: 14rem;
+}
+
+.formulario > input[type="submit"]:hover {
+  background-color: var(--bg-color-btn-submit);
+  cursor: pointer;
+}
+
+.tabla {
+  position: absolute;
+  top: 25rem;
+  /*Para aplcar estos estilos quitar position y top de .tabla y .formulario
+   margin-top: 20px; */
+  /* margin-bottom: 150px; */
+}
+
+.tabla > thead tr {
+  font-size: x-large;
+}
+
+.tabla > tbody tr {
+  background-color: var(--bg-color-tr);
+}
+
+/* *Agregar las siguientes clases de estilos a nuestro código de programación */
+.contacto {
+  font-size: 1.3rem;
+  padding: 10px;
+}
+
+.btn {
+  border-radius: 4px;
+  font-size: large;
+  font-weight: bold;
+  height: 2rem;
+  margin-left: 5px;
+}
+
+.btn-editar:hover {
+  background-color: var(--bg-color-btn-edit);
+  cursor: pointer;
+}
+
+.btn-eliminar:hover {
+  background-color: var(--bg-color-btn-delete);
+  cursor: pointer;
+}
