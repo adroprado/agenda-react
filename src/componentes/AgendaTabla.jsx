@@ -1,4 +1,6 @@
-const AgendaTabla = () => {
+import AgendaTablaFila from "./AgendaTablaFila";
+
+const AgendaTabla = ({ datos }) => {
   return (
     <table className="tabla">
       <thead>
@@ -9,7 +11,15 @@ const AgendaTabla = () => {
           <th>Acción</th>
         </tr>
       </thead>
-      <tbody></tbody>
+      <tbody>
+        {datos.length > 0 ? (
+          datos.map((el) => <AgendaTablaFila key={el.id} el={el} />)
+        ) : (
+          <tr>
+            <td colSpan="4">Sin datos</td>
+          </tr>
+        )}
+      </tbody>
     </table>
   );
 };

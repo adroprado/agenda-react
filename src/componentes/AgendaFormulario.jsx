@@ -1,4 +1,36 @@
-const AgendaFormulario = ({ handleSubmit, handleChange, contacto }) => {
+import { useState } from "react";
+const contactoInicial = { id: null, nombre: "", telefono: "", correo: "" };
+
+const AgendaFormulario = ({ crearContacto }) => {
+  const [contacto, setContacto] = useState(contactoInicial);
+
+  const handleChange = (e) => {
+    setContacto({
+      ...contacto,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Sencilla validación que verifica los campos del formulario, no estén vacíos.
+    if (!contacto.nombre || !contacto.telefono || !contacto.correo) {
+      alert("Datos incompletos"); // Mensaje para el usuario
+      return;
+    }
+
+    if (contacto.id === null) {
+      crearContacto(contacto); // Crea nuevo registro
+    } else {
+      // Actualizar registro
+    }
+    reiniciarFormulario();
+  };
+
+  const reiniciarFormulario = () => {
+    setContacto(contactoInicial); // El formulario queda vacío al actualizar la función "setContacto", nuevamente con el valor inicial "contactoInicial"
+  };
+
   return (
     <form className="formulario" autoComplete="off" onSubmit={handleSubmit}>
       <a href="https://github.com/adroprado/agenda-react" target="_blank">
