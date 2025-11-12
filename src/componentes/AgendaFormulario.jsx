@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 const contactoInicial = { id: null, nombre: "", telefono: "", correo: "" };
 
 const AgendaFormulario = ({ crearContacto }) => {

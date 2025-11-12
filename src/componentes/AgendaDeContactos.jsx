@@ -1,14 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AgendaFormulario from "./AgendaFormulario";
 import AgendaTabla from "./AgendaTabla";
 
 const AgendaDeContactos = () => {
   const [listaDeContactosBD, setListaDeContactosBD] = useState([]);
 
+  const ls = localStorage;
+
+  useEffect(() => {
+    const getContactos = JSON.parse(ls.getItem("contactos")) || [];
+    setListaDeContactosBD(getContactos);
+  }, []);
+
+  useEffect(() => {
+    ls.setItem("contactos", JSON.stringify(listaDeContactosBD));
+  }, [listaDeContactosBD]);
+
   const crearContacto = (datos) => {
     console.log(datos);
-    datos.id = Date.now(); // Estableciendo un identificador único para los nuevos elementos
-    setListaDeContactosBD([...listaDeContactosBD, datos]); // Actualizamos el estado con la creación de un array nuevo, esto se logra con los contactos existentes, más los nuevos contactos que se agreguen.
+    const nuevoContacto = { ...datos, id: Date.now() }; // Estableciendo un identificador único para los nuevos elementos
+    console.log(nuevoContacto);
+    setListaDeContactosBD([...listaDeContactosBD, nuevoContacto]); // Actualizamos el estado con la creación de un array nuevo, esto se logra con los contactos existentes, más los nuevos contactos que se agreguen.
   };
 
   return (
