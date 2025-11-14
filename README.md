@@ -2,12 +2,10 @@
 
 ### Descripción
 
-Este código implementa una aplicación de agenda de contactos con funcionalidades completas de **_CRUD_** (**Crear**, **Leer**, **Actualizar**, **Borrar**). La aplicación utiliza el **_localStorage_** del navegador como una base de datos simple para almacenar la información de los contactos de forma persistente. La interfaz de usuario se actualiza de forma dinámica, eliminando la necesidad de recargar la página.
+Esta aplicación es una Agenda de Contactos construida con **_React.js_**, enfocada en el manejo del **estado**, la **inmutabilidad** y la **persistencia de datos** utilizando **_localStorage_**.
 
 ### Herramientas
 
-- _HTML_
-  - _*Template*_
 - _CSS_
   - ❌ _Responsive_
 - _JavaScript_
