@@ -9,7 +9,7 @@ const AgendaTablaFila = ({ el, setDatosParaEditar, eliminarContacto }) => {
           className="btn-editar btn"
           type="button"
           value="Editar"
-          onClick={() => setDatosParaEditar(el)}
+          onClick={() => setDatosParaEditar(el)} // En el evento click enviamos como parámetro, los datos del contacto a editar/actualizar, a través de la función que actualiza la variable de estado "datosParaEditar"
         />
       </td>
       <td>
@@ -17,7 +17,7 @@ const AgendaTablaFila = ({ el, setDatosParaEditar, eliminarContacto }) => {
           className="btn-eliminar btn"
           type="button"
           value="Eliminar"
-          onClick={() => eliminarContacto(el.id)}
+          onClick={() => eliminarContacto(el.id)} // En el evento click enviamos como parámetro, el id del contacto a eliminar, a través de la función "eliminarContacto"
         />
       </td>
     </tr>

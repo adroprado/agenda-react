@@ -12,6 +12,7 @@ const AgendaTabla = ({ datos, setDatosParaEditar, eliminarContacto }) => {
         </tr>
       </thead>
       <tbody>
+        {/* Renderizamos la listaDeContactosBD y pasamos las props*/}
         {datos.length > 0 ? (
           datos.map((el) => (
             <AgendaTablaFila

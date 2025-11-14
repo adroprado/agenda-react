@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+// Objeto inicial del contacto
 const contactoInicial = { id: null, nombre: "", telefono: "", correo: "" };
 
 const AgendaFormulario = ({
@@ -10,6 +11,8 @@ const AgendaFormulario = ({
 }) => {
   const [contacto, setContacto] = useState(contactoInicial);
 
+  // --- Vigila la prop datosParaEditar. Cuando esta cambia, rellena el estado local contacto para que los inputs muestren la información a editar. ---
+
   useEffect(() => {
     if (datosParaEditar) {
       setContacto(datosParaEditar);
@@ -18,6 +21,7 @@ const AgendaFormulario = ({
     }
   }, [datosParaEditar]);
 
+  // --- Detecta las pulsaciones del teclado. Y actualiza el estado del contacto con el valor del input, usando el operador de propagación (...) ---
   const handleChange = (e) => {
     setContacto({
       ...contacto,
@@ -25,23 +29,25 @@ const AgendaFormulario = ({
     });
   };
 
+  // --- Se ejecuta al enviar el formulario
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // previene los efectos por defecto
+
     // Sencilla validación que verifica los campos del formulario, no estén vacíos.
     if (!contacto.nombre || !contacto.telefono || !contacto.correo) {
       alert("Datos incompletos"); // Mensaje para el usuario
       return;
     }
-
+    // Dependiendo del valor que tenga la propiedad id, debe llamar a nuestra función de crear o editar un contacto.
     if (contacto.id === null) {
       crearContacto(contacto); // Crea nuevo registro
     } else {
-      // Actualizar registro
-      actualizarContacto(contacto);
+      actualizarContacto(contacto); // Actualizar registro
     }
-    reiniciarFormulario();
+    reiniciarFormulario(); // Llamndo función de limpieza de formulario
   };
 
+  // Función que maneja la limpieza del formulario al añadir o editar un elemento. Y
   const reiniciarFormulario = () => {
     setContacto(contactoInicial); // El formulario queda vacío al actualizar la función "setContacto", nuevamente con el valor inicial "contactoInicial"
     setDatosParaEditar(null);
