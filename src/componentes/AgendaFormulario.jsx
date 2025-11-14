@@ -1,9 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const contactoInicial = { id: null, nombre: "", telefono: "", correo: "" };
 
-const AgendaFormulario = ({ crearContacto }) => {
+const AgendaFormulario = ({
+  crearContacto,
+  actualizarContacto,
+  datosParaEditar,
+  setDatosParaEditar,
+}) => {
   const [contacto, setContacto] = useState(contactoInicial);
+
+  useEffect(() => {
+    if (datosParaEditar) {
+      setContacto(datosParaEditar);
+    } else {
+      setContacto(contactoInicial);
+    }
+  }, [datosParaEditar]);
 
   const handleChange = (e) => {
     setContacto({
@@ -24,12 +37,14 @@ const AgendaFormulario = ({ crearContacto }) => {
       crearContacto(contacto); // Crea nuevo registro
     } else {
       // Actualizar registro
+      actualizarContacto(contacto);
     }
     reiniciarFormulario();
   };
 
   const reiniciarFormulario = () => {
     setContacto(contactoInicial); // El formulario queda vacío al actualizar la función "setContacto", nuevamente con el valor inicial "contactoInicial"
+    setDatosParaEditar(null);
   };
 
   return (
@@ -63,7 +78,6 @@ const AgendaFormulario = ({ crearContacto }) => {
         onChange={handleChange}
       />
       <input type="submit" value="Agregar" />
-      <input type="hidden" name="id" />
     </form>
   );
 };

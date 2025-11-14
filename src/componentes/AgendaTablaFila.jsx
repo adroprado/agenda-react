@@ -1,11 +1,16 @@
-const AgendaTablaFila = ({ el }) => {
+const AgendaTablaFila = ({ el, setDatosParaEditar }) => {
   return (
     <tr className="plantilla">
       <td className="nombre contacto">{el.nombre}</td>
       <td className="telefono contacto">{el.telefono}</td>
       <td className="correo contacto">{el.correo}</td>
       <td>
-        <input className="btn-editar btn" type="button" value="Editar" />
+        <input
+          className="btn-editar btn"
+          type="button"
+          value="Editar"
+          onClick={() => setDatosParaEditar(el)}
+        />
       </td>
       <td>
         <input className="btn-eliminar btn" type="button" value="Eliminar" />

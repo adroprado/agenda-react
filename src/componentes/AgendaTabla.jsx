@@ -1,6 +1,6 @@
 import AgendaTablaFila from "./AgendaTablaFila";
 
-const AgendaTabla = ({ datos }) => {
+const AgendaTabla = ({ datos, setDatosParaEditar }) => {
   return (
     <table className="tabla">
       <thead>
@@ -13,7 +13,13 @@ const AgendaTabla = ({ datos }) => {
       </thead>
       <tbody>
         {datos.length > 0 ? (
-          datos.map((el) => <AgendaTablaFila key={el.id} el={el} />)
+          datos.map((el) => (
+            <AgendaTablaFila
+              key={el.id}
+              el={el}
+              setDatosParaEditar={setDatosParaEditar}
+            />
+          ))
         ) : (
           <tr>
             <td colSpan="4">Sin datos</td>

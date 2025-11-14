@@ -4,6 +4,7 @@ import AgendaTabla from "./AgendaTabla";
 
 const AgendaDeContactos = () => {
   const [listaDeContactosBD, setListaDeContactosBD] = useState([]);
+  const [datosParaEditar, setDatosParaEditar] = useState(null); //null- realizamos inserción. true - realizamos actualización.
 
   const ls = localStorage;
 
@@ -23,10 +24,25 @@ const AgendaDeContactos = () => {
     setListaDeContactosBD([...listaDeContactosBD, nuevoContacto]); // Actualizamos el estado con la creación de un array nuevo, esto se logra con los contactos existentes, más los nuevos contactos que se agreguen.
   };
 
+  const actualizarContacto = (datos) => {
+    const contactoEditado = listaDeContactosBD.map((el) =>
+      el.id === datos.id ? datos : el
+    ); //Si coincide el id, que establezca la nueva información, de lo contrario, se mantenga igual
+    setListaDeContactosBD(contactoEditado); //Actualizamos la base de datos con la nueva información.
+  };
+
   return (
     <main>
-      <AgendaFormulario crearContacto={crearContacto} />
-      <AgendaTabla datos={listaDeContactosBD} />
+      <AgendaFormulario
+        crearContacto={crearContacto}
+        actualizarContacto={actualizarContacto}
+        datosParaEditar={datosParaEditar}
+        setDatosParaEditar={setDatosParaEditar}
+      />
+      <AgendaTabla
+        datos={listaDeContactosBD}
+        setDatosParaEditar={setDatosParaEditar}
+      />
     </main>
   );
 };
