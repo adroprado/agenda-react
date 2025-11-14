@@ -31,6 +31,15 @@ const AgendaDeContactos = () => {
     setListaDeContactosBD(contactoEditado); //Actualizamos la base de datos con la nueva información.
   };
 
+  const eliminarContacto = (id) => {
+    if (id) {
+      let contactoEliminado = listaDeContactosBD.filter((el) => el.id !== id); // Filtramos nuestra base de datos, quitando elelemento en cuestión
+      setListaDeContactosBD(contactoEliminado); // Actualizamos nuestra base de datos
+    } else {
+      return;
+    }
+  };
+
   return (
     <main>
       <AgendaFormulario
@@ -42,6 +51,7 @@ const AgendaDeContactos = () => {
       <AgendaTabla
         datos={listaDeContactosBD}
         setDatosParaEditar={setDatosParaEditar}
+        eliminarContacto={eliminarContacto}
       />
     </main>
   );

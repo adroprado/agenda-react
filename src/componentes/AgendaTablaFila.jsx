@@ -1,4 +1,4 @@
-const AgendaTablaFila = ({ el, setDatosParaEditar }) => {
+const AgendaTablaFila = ({ el, setDatosParaEditar, eliminarContacto }) => {
   return (
     <tr className="plantilla">
       <td className="nombre contacto">{el.nombre}</td>
@@ -13,7 +13,12 @@ const AgendaTablaFila = ({ el, setDatosParaEditar }) => {
         />
       </td>
       <td>
-        <input className="btn-eliminar btn" type="button" value="Eliminar" />
+        <input
+          className="btn-eliminar btn"
+          type="button"
+          value="Eliminar"
+          onClick={() => eliminarContacto(el.id)}
+        />
       </td>
     </tr>
   );

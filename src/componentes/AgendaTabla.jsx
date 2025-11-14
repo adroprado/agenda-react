@@ -1,6 +1,6 @@
 import AgendaTablaFila from "./AgendaTablaFila";
 
-const AgendaTabla = ({ datos, setDatosParaEditar }) => {
+const AgendaTabla = ({ datos, setDatosParaEditar, eliminarContacto }) => {
   return (
     <table className="tabla">
       <thead>
@@ -18,6 +18,7 @@ const AgendaTabla = ({ datos, setDatosParaEditar }) => {
               key={el.id}
               el={el}
               setDatosParaEditar={setDatosParaEditar}
+              eliminarContacto={eliminarContacto}
             />
           ))
         ) : (
