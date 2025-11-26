@@ -8,7 +8,6 @@ Esta aplicación es una Agenda de Contactos construida con **_React.js_**, enfoc
 
 - _CSS_
   - ❌ _Responsive_
-- _JavaScript_
 - _React_
   - _jsx_
   - _props_
